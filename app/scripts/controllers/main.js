@@ -8,10 +8,10 @@
  * Controller of the walletApp
  */
 angular.module('walletApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, walletBill) {
+    function init() {
+      $scope.bills = walletBill.query();
+    }
+    
+    init();
   });
