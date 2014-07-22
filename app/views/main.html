@@ -1,6 +1,6 @@
 <div class="row">
   <form name="addBillForm" class="col-md-9 form-inline">
-    <div class="input-group">
+    <div class="input-group" ng-class="{'has-error':addBillForm.$invalid}">
     <span class="input-group-addon">
       <label>
         <input type="checkbox" ng-model="isSpent"> isSpent
@@ -8,7 +8,7 @@
     </span>
     <input type="number" placeholder="Add new billnote" ng-model="note" class="form-control" required>
     <span class="input-group-btn">
-      <button class="btn btn-primary" ng-click="addBill()">add</button>
+      <button class="btn btn-primary" ng-click="addBill()" ng-disabled="addBillForm.$invalid">add</button>
     </span>
     </div>
   </form>
