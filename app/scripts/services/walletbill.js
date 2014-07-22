@@ -10,10 +10,16 @@
 angular.module('walletApp')
   .factory('walletBill', function () {
 
+    var bills = [{'note': 12}, {'note': 2}];
+
     return {
-      query: function () {
-        var bills = ['bill1', 'bill2'];
+      query: function() {
         return bills;
+      },
+
+      save: function(note) {
+        note.created = new Date();
+        bills.push(note); 
       }
     };
   });
