@@ -12,7 +12,6 @@ angular.module('walletApp')
     function init() {
       $scope.bills = walletBill.query();
       $scope.note = '';
-      setTotal();
     }
     
     $scope.addBill = function() {
@@ -23,13 +22,20 @@ angular.module('walletApp')
       init();
     };
 
-    function setTotal() {
-      console.log('alma');
-      $scope.total = $scope.bills.reduce(function(sum, bill) {
-        console.log(bill, sum);
+    $scope.reset = function() {
+      walletBill.reset();
+      init();
+    };
+
+    function getTotal() {
+      return $scope.bills.reduce(function(sum, bill) {
         return sum + bill.note;
       }, 0);
     }
+
+    $scope.$watch('bills', function() {
+      $scope.total = getTotal();
+    }, true);
 
     init();
   });

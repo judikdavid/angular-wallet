@@ -20,6 +20,10 @@ angular.module('walletApp')
       save: function(note) {
         note.created = new Date();
         bills.push(note); 
+      },
+
+      reset: function() {
+        bills.length = 0;
       }
     };
   });
