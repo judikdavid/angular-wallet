@@ -20,6 +20,7 @@ angular.module('walletApp')
 
     function init() {
       $scope.bills = walletBill.query();
+      $scope.isSpent = false;
       $scope.note = '';
     }
     
@@ -31,6 +32,7 @@ angular.module('walletApp')
 
     $scope.addBill = function() {
       var note = parseFloat($scope.note);
+      note = $scope.isSpent ? -note : note;
 
       walletBill.save({
         note: note

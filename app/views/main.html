@@ -1,13 +1,22 @@
-<form name="addBillForm" class="form-inline">
-  <div class="input-group">
-  <input type="number" placeholder="Add new billnote" ng-model="note" class="form-control" required>
-  <span class="input-group-btn">
-    <button class="btn btn-primary" ng-click="addBill()">add</button>
-  </span>
+<div class="row">
+  <form name="addBillForm" class="col-md-9 form-inline">
+    <div class="input-group">
+    <span class="input-group-addon">
+      <label>
+        <input type="checkbox" ng-model="isSpent"> isSpent
+      </label>
+    </span>
+    <input type="number" placeholder="Add new billnote" ng-model="note" class="form-control" required>
+    <span class="input-group-btn">
+      <button class="btn btn-primary" ng-click="addBill()">add</button>
+    </span>
+    </div>
+  </form>
+  <div class="col-md-3">
+  <select class="form-control" ng-model="currentCurrency" ng-options="currency.name for currency in currencies"></select><br>
   </div>
-</form>
+</div>
 
-<select ng-model="currentCurrency" ng-options="currency.name for currency in currencies"></select><br>
 
 <div class="panel panel-primary">
   <div class="panel-heading">Grand Total: <i class="fa fa-{{currentCurrency.name}}"></i>{{total}}</div>
