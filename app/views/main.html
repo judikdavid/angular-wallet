@@ -22,7 +22,8 @@
   <div class="panel-heading">Grand Total: <i class="fa fa-{{currentCurrency.name}}"></i>{{total}}</div>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="bill in bills">
-        {{bill.note}} -- {{bill.created | date: 'yyyy-MM-dd HH:mm'}}
+        <strong>{{bill.created | date: 'yyyy-MM-dd HH:mm'}}</strong>
+        <span format-money="bill.note"></span>
       </li>
     </ul>
 </div>
