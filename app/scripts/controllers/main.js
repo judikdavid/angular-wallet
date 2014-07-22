@@ -8,7 +8,7 @@
  * Controller of the walletApp
  */
 angular.module('walletApp')
-  .controller('MainCtrl', function ($scope, walletBill, currency) {
+  .controller('MainCtrl', function ($scope, $modal, walletBill, currency) {
 
     $scope.currencies = currency.query();
     
@@ -49,6 +49,14 @@ angular.module('walletApp')
     $scope.$watch('bills', function() {
       $scope.total = getTotal();
     }, true);
+
+    $scope.viewSource = function() {
+      var innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) 
+          { return {'<':'&lt;','>':'&gt;'}[m];});
+      $modal.open({
+        template: '<pre>' + innerHTML + '</pre>'
+      });
+    };
 
     init();
   });
