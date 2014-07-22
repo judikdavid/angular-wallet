@@ -7,15 +7,14 @@
   </div>
 </form>
 
+<select ng-model="currentCurrency" ng-options="currency.name for currency in currencies"></select><br>
+
 <div class="panel panel-primary">
-  <div class="panel-heading">Grand Total</div>
-  <div class="panel-body">
-    {{total}}
-  </div>
+  <div class="panel-heading">Grand Total: <i class="fa fa-{{currentCurrency.name}}"></i>{{total}}</div>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="bill in bills">
+        {{bill.note}} -- {{bill.created | date: 'yyyy-MM-dd HH:mm'}}
+      </li>
+    </ul>
 </div>
 
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="bill in bills">
-    {{bill.note}} -- {{bill.created}}
-  </li>
-</ul>
