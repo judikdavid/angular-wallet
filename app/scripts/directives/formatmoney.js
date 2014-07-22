@@ -15,7 +15,7 @@ angular.module('walletApp')
       link: function postLink(scope, element, attrs) {
         scope.$watch(attrs.formatMoney, function(number) {
           scope.money = Math.abs(number);
-          scope.type = number > 0 ? 'earn' : 'spent';
+          scope.type = number > 0 ? 'earned' : 'spent';
         });
       }
     };

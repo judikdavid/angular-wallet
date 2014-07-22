@@ -8,15 +8,11 @@
  * Controller of the walletApp
  */
 angular.module('walletApp')
-  .controller('MainCtrl', function ($scope, walletBill) {
+  .controller('MainCtrl', function ($scope, walletBill, currency) {
 
-    $scope.currencies = [
-      {'symbol': '$', 'name': 'dollar'},
-      {'symbol': '€', 'name': 'euro'},
-      {'symbol': '£', 'name': 'gbp'},
-    ];
+    $scope.currencies = currency.query();
     
-    $scope.currentCurrency = $scope.currencies[0];
+    $scope.currentCurrency = currency.getCurrent();
 
     function init() {
       $scope.bills = walletBill.query();
@@ -29,6 +25,10 @@ angular.module('walletApp')
         return sum + bill.note;
       }, 0);
     }
+
+    $scope.setCurrency = function() {
+      currency.setCurrency($scope.currentCurrency);
+    };
 
     $scope.addBill = function() {
       var note = parseFloat($scope.note);

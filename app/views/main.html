@@ -13,7 +13,7 @@
     </div>
   </form>
   <div class="col-md-3">
-  <select class="form-control" ng-model="currentCurrency" ng-options="currency.name for currency in currencies"></select><br>
+  <select class="form-control" ng-change="setCurrency()" ng-model="currentCurrency" ng-options="currency.name for currency in currencies"></select><br>
   </div>
 </div>
 
